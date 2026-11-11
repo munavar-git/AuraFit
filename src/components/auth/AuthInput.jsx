@@ -25,7 +25,6 @@ function AuthInput({
                 className="w-full border border-gray-300 outline-none rounded-lg px-4 py-3 focus:border-black"
                 required={required}
             />
-            <p>hihihnhiuSUk,i <</p>
         </div>
     )
 }

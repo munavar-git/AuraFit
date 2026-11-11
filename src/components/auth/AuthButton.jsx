@@ -1,3 +1,5 @@
+import { Children } from "react"
+
 function AuthButton({
     children,
     disabled = false,
@@ -11,7 +13,7 @@ function AuthButton({
             text-sm font-bold text-white
             disabled:opacity-50"
         >
-            hHhh
+            {children}
         </button>
     )
 }
