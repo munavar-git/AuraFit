@@ -11,7 +11,7 @@ function AuthButton({
             text-sm font-bold text-white
             disabled:opacity-50"
         >
-            {children}
+            hHhh
         </button>
     )
 }
