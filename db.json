@@ -1,0 +1,13 @@
+{
+  "products": [],
+  "users": [
+    {
+      "name": "john",
+      "email": "pelvis-rebel07@bravealias.com",
+      "password": "123",
+      "id": "7mtCXEuqeQg"
+    }
+  ],
+  "orders": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
