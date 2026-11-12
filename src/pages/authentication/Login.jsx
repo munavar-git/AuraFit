@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import AuthInput from "../../components/auth/AuthInput"
 import AuthButton from "../../components/auth/AuthButton"
 import { loginUser } from "../../services/userServices"
-import { formToJSON } from "axios"
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -105,11 +104,11 @@ function Login() {
                         {error && (
                             <p className="text-red-600 text-sm">{error}</p>
                         )}
-                        <AuthButton>
-                            LOG IN →
+                        <AuthButton disabled={isloading}>
+                           {isloading?"logging in ":" LOG IN →"}
                         </AuthButton>
 
-                    </form>
+                    </form> 
 
                     {/* Alternative */}
                     <div className="my-6 flex items-center gap-4">
