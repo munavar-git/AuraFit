@@ -12,7 +12,7 @@ function HeroSection() {
                 className="absolute inset-0 w-full h-full object-cover object-center"
             />
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/10 to-transparent"></div>
             {/* Hero Content */}
             <div className="absolute bottom-12 left-6 md:left-12 z-10 text-white">
 

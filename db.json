@@ -1,5 +1,66 @@
 {
-  "products": [],
+  "products": [
+     {
+      "id": "1",
+      "name": "AURAFIT Performance T-Shirt",
+      "category": "men",
+      "price": 1299,
+      "image": "/images/products/performance-tshirt.jpg",
+      "description": "Lightweight performance training t-shirt.",
+      "stock": 25,
+      "featured": true
+    },
+    {
+      "id": "2",
+      "name": "AURAFIT Training Leggings",
+      "category": "women",
+      "price": 1599,
+      "image": "/images/products/training-leggings.jpg",
+      "description": "Flexible leggings designed for training.",
+      "stock": 18,
+      "featured": true
+    },
+    {
+      "id": "3",
+      "name": "AURAFIT Training Shorts",
+      "category": "men",
+      "price": 999,
+      "image": "/images/products/training-shorts.jpg",
+      "description": "Comfortable shorts for gym sessions.",
+      "stock": 30,
+      "featured": true
+    },
+    {
+      "id": "4",
+      "name": "AURAFIT Sports Bra",
+      "category": "women",
+      "price": 1399,
+      "image": "/images/products/sports-bra.jpg",
+      "description": "Supportive sports bra for workouts.",
+      "stock": 20,
+      "featured": true
+    },
+    {
+      "id": "5",
+      "name": "AURAFIT Gym Bag",
+      "category": "accessories",
+      "price": 1199,
+      "image": "/images/products/gym-bag.jpg",
+      "description": "Spacious gym bag for everyday training.",
+      "stock": 15,
+      "featured": false
+    },
+    {
+      "id": "6",
+      "name": "AURAFIT Training Hoodie",
+      "category": "men",
+      "price": 1899,
+      "image": "/images/products/training-hoodie.jpg",
+      "description": "Premium hoodie for training and casual wear.",
+      "stock": 12,
+      "featured": true
+    }
+  ],
   "users": [
     {
       "name": "john",
