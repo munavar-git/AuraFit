@@ -32,23 +32,23 @@
     },
     {
       "id": "4",
-      "name": "AURAFIT Sports Bra",
-      "category": "women",
+      "name": "AURAFIT Training Cap",
+      "category": "accessories",
       "price": 1399,
-      "image": "/images/products/sports-bra.jpg",
-      "description": "Supportive sports bra for workouts.",
+      "image": "/images/products/training-cap.jpg",
+      "description": "Next workout in the adjustable training cap..",
       "stock": 20,
-      "featured": true
+      "featured": false
     },
     {
       "id": "5",
       "name": "AURAFIT Gym Bag",
       "category": "accessories",
       "price": 1199,
-      "image": "/images/products/gym-bag.jpg",
+      "image": "/images/products/gym-bag.png",
       "description": "Spacious gym bag for everyday training.",
       "stock": 15,
-      "featured": false
+      "featured": true
     },
     {
       "id": "6",
