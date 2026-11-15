@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { Link } from "react-router-dom"
-import { getProducts } from "../services/productService"
+import { getProducts } from "../../services/productService"
 
 function FeaturedProducts() {
     const { data: products, isPending, isError } = useQuery({
@@ -42,7 +42,7 @@ return (
                     >
 
                         {/* Image */}
-                        <div className="aspect-[3/4] overflow-hidden bg-gray-100">
+                        <div className="aspect-3/4 overflow-hidden bg-gray-100">
                             <img
                                 src={product.image}
                                 alt={product.name}

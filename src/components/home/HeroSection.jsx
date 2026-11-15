@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import heroImage from "../assets/bg.jpg"
+import heroImage from "../../assets/bg.jpg"
 
 function HeroSection() {
     return (
@@ -12,7 +12,7 @@ function HeroSection() {
                 className="absolute inset-0 w-full h-full object-cover object-center"
             />
             {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/10 to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/50 to-transparent"></div>
             {/* Hero Content */}
             <div className="absolute bottom-12 left-6 md:left-12 z-10 text-white">
 
@@ -31,7 +31,7 @@ function HeroSection() {
                 <div className="flex flex-wrap gap-4">
 
                     <Link
-                        to="/products"
+                        to="/products?category=men"
                         className="bg-white text-black px-8 py-4 text-sm font-bold hover:bg-gray-200 transition"
                     >
                         SHOP MEN

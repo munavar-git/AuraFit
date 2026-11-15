@@ -12,11 +12,11 @@
     },
     {
       "id": "2",
-      "name": "AURAFIT Training Leggings",
+      "name": "AURAFIT Women's Essential Quarter-Zip Training Top",
       "category": "women",
       "price": 1599,
-      "image": "/images/products/training-leggings.jpg",
-      "description": "Flexible leggings designed for training.",
+      "image": "/images/products/AURAFIT Women's Essential Quarter-Zip Training Top.jpg",
+      "description": "comfortable and confident through every workout with the AURAFIT Women's Essential Quarter-Zip Training Top.",
       "stock": 18,
       "featured": true
     },
@@ -35,7 +35,7 @@
       "name": "AURAFIT Training Cap",
       "category": "accessories",
       "price": 1399,
-      "image": "/images/products/training-cap.jpg",
+      "image": "/images/products/training-cap.webp",
       "description": "Next workout in the adjustable training cap..",
       "stock": 20,
       "featured": false
