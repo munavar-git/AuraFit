@@ -2,11 +2,15 @@ import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { getProductById } from "../services/productService"
 import { useState } from "react"
+import { useDispatch} from "react-redux"
+import { addToCart } from "../redux/cartSlice"
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/layout/NavBar"
 function ProductDetails() {
     const [size, setSize] = useState("")
-    const [quantity, setQuantity]= useState(1)  
     const { id } = useParams()
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
     const { data: product, isLoading, isError } = useQuery({
         queryKey: ["product", id],
         queryFn: () => getProductById(id)
@@ -19,12 +23,14 @@ function ProductDetails() {
 
     return (
         <section className="max-w-7xl mx-auto py-16 px-6  ">
+            <Navbar/>
             <div className=" flex flex-col md:flex-row gap-10">
                 <div className="md:w-1/2">
                     <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full aspect-4/5 object-cover rounded-lg"
+                        className="w-100 aspect-[4/5] overflow-hidden
+                         object-cover rounded-lg"
                     />
                     <div className="grid grid-cols-4 gap-4 mt-4">
                         <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded-lg" />
@@ -46,8 +52,8 @@ function ProductDetails() {
                                 key={item}
                                 onClick={() => setSize(item)}
                                 className={`px-4 py-2 border rounded transition ${size === item
-                                        ? "bg-black text-white border-black"
-                                        : "bg-white text-black hover:bg-gray-100"
+                                    ? "bg-black text-white border-black"
+                                    : "bg-white text-black hover:bg-gray-100"
                                     }`}>
                                 {item}
 
@@ -55,17 +61,23 @@ function ProductDetails() {
 
                         ))}
                     </div>
-                    
-                    <button 
-                    disabled={!size}
-                    className="px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition 
-                    disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-700">
+
+                    <button
+                        onClick={() => dispatch(addToCart({ ...product, size }))}
+                        disabled={!size || product.stock <= 0}                        className="px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition 
+                          disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-700">
                         Add to Cart
                     </button>
-
+                    <button
+    onClick={() => navigate("/cart")}
+    className="px-6 py-3 bg-white text-black border border-black rounded hover:bg-gray-100 transition"
+>
+    Go to Cart
+</button>
+                 
                 </div>
             </div>
-            
+
         </section>
     )
 }

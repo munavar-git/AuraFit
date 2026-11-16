@@ -15,7 +15,6 @@ function Navbar() {
         <Link to="/products?category=accessories" className="hover:underline">Accessories</Link>
     </div>
 
-    {/* Logo */}
     <Link to="/" className="text-2xl font-black tracking-[0.2em] justify-self-center">
         AURAFIT
     </Link>
