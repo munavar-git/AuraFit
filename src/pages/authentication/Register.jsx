@@ -1,9 +1,10 @@
-
-import { useState } from "react"
-import AuthInput from "../../components/auth/AuthInput"
-import AuthButton from "../../components/auth/AuthButton"
-import { Link } from "react-router-dom"
-import { registerUser } from "../../services/userServices"
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import AuthInput from "../../components/auth/AuthInput";
+import AuthButton from "../../components/auth/AuthButton";
+import { registerUser } from "../../services/userServices";
+import { loginSuccess } from "../../redux/authSlice";
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -11,82 +12,77 @@ function Register() {
         email: "",
         password: "",
         confirmPassword: ""
-    })
+    });
 
-    const [error, setError] = useState("")
-    const [isloading, setIsLoading] = useState(false)
+    const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function handleChange(e) {
-        const { name, value } = e.target
-
+        const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
-        }))
+        }));
     }
 
     async function handleSubmit(e) {
-        e.preventDefault()
-        setError("")
+        e.preventDefault();
+        setError("");
 
         if (formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match")
-            return
+            setError("Passwords do not match");
+            return;
         }
-        setIsLoading(true)
+
+        setIsLoading(true);
         try {
-
-           let newUser= await registerUser(formData)
-           console.log('registered successfull',newUser)
-        } catch (error) {
-            setError(error.message)
+            const newUser = await registerUser(formData);
+            dispatch(loginSuccess(newUser));
+            navigate("/");
+        } catch (err) {
+            setError(err.message || "Failed to create account");
+        } finally {
+            setIsLoading(false);
         }
-        finally {
-            setIsLoading(false)
-        }
-
-
     }
 
     return (
-
         <div className="min-h-screen bg-[#FAF9F6] px-6">
-            <header className="flex items-center justify-between py-8">
-                <p className="text-2xl font-bold tracking-tight">
+            <header className="flex items-center justify-between py-8 max-w-6xl mx-auto">
+                <Link to="/" className="text-2xl font-black tracking-widest">
                     AURAFIT
-                </p>
+                </Link>
 
                 <p className="text-sm text-gray-600">
                     Already have an account?
                     <Link
                         to="/login"
-                        className="ml-1 font-semibold text-black"
+                        className="ml-1 font-semibold text-black hover:underline"
                     >
                         Login →
                     </Link>
                 </p>
             </header>
+
             <main className="flex min-h-[75vh] items-center justify-center">
-                <div className="w-full max-w-md space-y-6">
-
-                    <div className="text-center">
-
-
-                        <h1 className="text-4xl font-bold ">
+                <div className="w-full max-w-md bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+                    <div className="text-center mb-6">
+                        <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
                             JOIN AURAFIT
                         </h1>
-                        <p className="text-gray-500 ">
-                            Create your account and take the first
-                            step toward comfortable everyday movement.
+                        <p className="text-gray-500 text-sm mt-2">
+                            Create your account to unlock order tracking and personalized gear recommendations.
                         </p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
-
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                         <AuthInput
                             label="Full Name"
                             name="name"
-                            placeholder="eg.John Pork"
+                            placeholder="e.g. Alex Morgan"
                             value={formData.name}
                             onChange={handleChange}
                             autoComplete="name"
@@ -97,7 +93,7 @@ function Register() {
                             label="Email"
                             name="email"
                             type="email"
-                            placeholder="Enter your email"
+                            placeholder="user@example.com"
                             value={formData.email}
                             onChange={handleChange}
                             autoComplete="email"
@@ -127,20 +123,19 @@ function Register() {
                         />
 
                         {error && (
-                            <p className="text-red-600 text-sm">{error}</p>
+                            <div className="p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg flex items-center gap-2">
+                                <i className="ri-error-warning-line"></i> {error}
+                            </div>
                         )}
 
-                        <AuthButton disabled={isloading}>{isloading?"CREATING ACCOUNT...":"CREATE ACCOUNT"}</AuthButton>
-
+                        <AuthButton disabled={isLoading}>
+                            {isLoading ? "CREATING ACCOUNT..." : "CREATE ACCOUNT"}
+                        </AuthButton>
                     </form>
-
-
-
                 </div>
             </main>
         </div>
-    )
-
+    );
 }
 
-export default Register
+export default Register;
